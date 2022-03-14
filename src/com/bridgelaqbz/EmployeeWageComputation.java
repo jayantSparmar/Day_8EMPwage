@@ -5,12 +5,16 @@ public class EmployeeWageComputation {
     public static final int isFullTime = 2;
     public static final int empRatePerHour = 20;
     public static final int nomOfWorkingDays = 2;
+    public static final int maxHrsInMonth = 100;
+
     public static void main(String[] args) {
     EmployeeWageComputation object = new EmployeeWageComputation();
     object.Uc1();
     object.Uc2();
     object.Uc3();
     object.Uc4();
+    object.Uc5();
+    object.Uc6();
 }
 
     public void Uc1(){
@@ -78,6 +82,7 @@ public class EmployeeWageComputation {
         System.out.println("Emp Wage: " + empWage);
 
     }
+
     public void Uc5(){
         int empHrs = 0;
         int empWage = 0;
@@ -101,13 +106,17 @@ public class EmployeeWageComputation {
             System.out.println("Emp Wage: " + empWage);
         }
         System.out.println("Total emp Wage: " + totalEmpWage);
+
     }
-    public void Uc5(){
+    public void Uc6(){
+        System.out.println("UC-6===============>");
         int empHrs = 0;
-        int empWage = 0;
-        int totalEmpWage = 0;
+        int totalEmpHrs = 0;
+        int totalWorkingDays = 0;
 
-        for (int day = 0; day < nomOfWorkingDays; day++) {
+        while (totalEmpHrs <= maxHrsInMonth && totalWorkingDays < nomOfWorkingDays)
+        {
+            totalWorkingDays++;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
             switch (empCheck) {
                 case isPartTime:
@@ -119,15 +128,15 @@ public class EmployeeWageComputation {
                 default:
                     empHrs = 0;
             }
-
-            empWage = (empHrs * empRatePerHour);
-            totalEmpWage += empWage;
-            System.out.println("Emp Wage: " + empWage);
+            totalEmpHrs += empHrs;
+            System.out.println("Day#: " + totalWorkingDays + "EmpHr: " + empHrs);
         }
-        System.out.println("Total emp Wage: " + totalEmpWage);
-
+        int totalEmpWage = totalEmpHrs * empRatePerHour;
+        System.out.println("Total empWage: " + totalEmpWage);
     }
 }
+
+
 
 
 
